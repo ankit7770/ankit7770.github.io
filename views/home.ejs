@@ -1,0 +1,66 @@
+<head>
+  <title>MeTooIndia</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <style>
+ h2 {
+color: Violet; 
+}
+span{
+color: black
+}
+</style>
+<div class="container">
+  <h2>MeToo <span>India</span></h2>
+     <div class="form-group">        
+  <input type="text" id="myInput" style = "float:right;" onkeyup="myFunction()" placeholder="Search for a name.." title="Type in a Alleged Person">
+    <table id="myTable" class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th>Alleged Person</th>
+        <th>Profession</th>
+        <th>source</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i=0; i<thingVar.length; i++){%>
+      <tr>
+        <th scope="row"><%=i+1%></th>
+        <td><a href=<%=thingVar[i].twitterAccount%> target="_blank"><%=thingVar[i].person%></a></td>
+         <td><%=thingVar[i].profession%></td>
+         <td><a href=<%=thingVar[i].source%> target="_blank">source</a></td>
+</tr><%}%>  
+    </tbody>
+  </table>
+</div>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+</body>
+
+
+
